@@ -1,0 +1,23 @@
+import sys
+import pygame as pg
+from ship import Ship
+from settings import Settings
+import game_functions as gf
+
+def run_game():
+
+    pg.init()
+    game_settings = Settings()
+
+    screen = pg.display.set_mode((game_settings.screen_width, game_settings.screen_height))
+    pg.display.set_caption('ALIEN INVASION')
+
+    ship = Ship(screen)
+
+    while True:
+
+        gf.check_events(ship)
+        ship.update()
+        gf.update_screen(game_settings, screen, ship)
+
+run_game()
